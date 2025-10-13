@@ -1,0 +1,147 @@
+{
+  "name": "01_action_node_EditFields",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -416,
+        -96
+      ],
+      "id": "4f81da04-09e8-40ab-b9d3-b4512ae0e29c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://zenquotes.io/api/random",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -160,
+        -96
+      ],
+      "id": "928bba1d-fefe-44c2-83e0-a7534852c9d6",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4f3d1478-fd12-4ba3-ab3b-828085a7aa61",
+              "name": "quote",
+              "value": "={{ $json.q }}",
+              "type": "string"
+            },
+            {
+              "id": "a06a6e41-d1f7-4caa-a1a4-4cd54808f4fe",
+              "name": "help",
+              "value": "={{ $json.h }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        48,
+        -96
+      ],
+      "id": "c4518f80-6534-4e36-a8e4-f978bbe56a74",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "url": "https://api.finance.naver.com/siseJson.naver",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        176
+      ],
+      "id": "7177d2f6-c5c5-43c5-b770-0b9bc69948ec",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f62af8c4-2a64-40ee-9d3f-0b689a9b1687",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        176
+      ],
+      "id": "5cb614a2-9b32-49a5-9fe6-079bc8617262",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "886655f5-8c86-4c42-b5ab-01e815bcbde6",
+  "meta": {
+    "instanceId": "5d5789c044a3a2821db2b160d0a1657b1d607be52f0c09651e6533112e35e70c"
+  },
+  "id": "BDGZGIQiufoiuwE5",
+  "tags": []
+}
