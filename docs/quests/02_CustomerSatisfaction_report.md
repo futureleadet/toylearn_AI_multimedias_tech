@@ -26,7 +26,7 @@ https://docs.google.com/spreadsheets/d/1KZlqe6HvfufWMOejrlQbxfvGMaH_25KUrYMoUsJZ
 
 - 분석 지표는 순추천고객지수(NPS), 고객만족도(CSAT), 그리고 고객 피드백으로 구성되어 있습니다.
 
-대상 서비스는 전략 수립, AI 거버넌스, IT 운영혁신 등 다양한 AI 관련 솔루션 및 컨설팅 서비스를 포함합니다.
+- 대상 서비스는 전략 수립, AI 거버넌스, IT 운영혁신 등 다양한 AI 관련 솔루션 및 컨설팅 서비스를 포함합니다.
 
 ### 2. 전체 만족도 현황 분석
 - 전체 서비스의 평균 NPS 점수는 약 65.1점으로 '우수' 수준에 해당합니다.
