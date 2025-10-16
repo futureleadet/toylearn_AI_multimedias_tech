@@ -1,0 +1,195 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "7324256577",
+        "text": "={{ $json.title }} {{ $json.guid }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        32
+      ],
+      "id": "d5a21f41-8183-4cfb-885a-f19cf0d7a92a",
+      "name": "Send a text message",
+      "webhookId": "122c20c3-0680-4113-9c3e-67641735c6cf",
+      "credentials": {
+        "telegramApi": {
+          "id": "sslERMnyT4OISTzw",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -480,
+        -160
+      ],
+      "id": "208e8674-d2ab-4dfa-a39a-3e2227d29b1d",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://www.yna.co.kr/rss/industry.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -272,
+        32
+      ],
+      "id": "76c728bf-e9fd-4bb5-89d3-cf55d990bc1b",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        32
+      ],
+      "id": "80b01d2b-f062-4416-9a19-5e6bfc521e7a",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "chatId": "7324256577",
+        "text": "={{ $json.title }}{{ $json.link }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        -160
+      ],
+      "id": "f3f9b516-7752-429e-b29a-2b18b68239a6",
+      "name": "Send a text message1",
+      "webhookId": "122c20c3-0680-4113-9c3e-67641735c6cf",
+      "credentials": {
+        "telegramApi": {
+          "id": "sslERMnyT4OISTzw",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "http://rss.edaily.co.kr/stock_news.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -272,
+        -160
+      ],
+      "id": "ecb48f32-1cbf-487d-88a3-478d4f6c5f3c",
+      "name": "RSS Read1"
+    },
+    {
+      "parameters": {
+        "maxItems": 2
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        -160
+      ],
+      "id": "ec75a2f0-7c31-49ce-bc13-ea1f6f29f812",
+      "name": "Limit1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read1": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "75a38931-e764-44e2-b712-5a7121042d00",
+  "meta": {
+    "instanceId": "5d5789c044a3a2821db2b160d0a1657b1d607be52f0c09651e6533112e35e70c"
+  },
+  "id": "nt7lCuNJi1oDGZQd",
+  "tags": []
+}
