@@ -110,8 +110,3 @@ https://drive.google.com/file/d/1stdnaaciGMwf9Uq4-1-bSihOQNF6KOxY/view?usp=drive
 
 
 결론: 정량적인 성과 제시 능력(15% 향상, 72%→93% 개선)이 탁월하고 , 직무 전문성 및 인재상 부합도가 높아 단기 적응 및 즉시 전력화가 가능한 우수 인재로 판단됩니다.
-
-
-
-
-Gemini는 인물 등에 관한 정보 제공 시 실수를 할 수 있
