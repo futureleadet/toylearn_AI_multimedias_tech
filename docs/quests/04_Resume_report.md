@@ -9,7 +9,7 @@
 아래 출력방식으로 정리해줘
 
 [입력]
-https://drive.google.com/file/d/1stdnaaciGMwf9Uq4-1-bSihOQNF6KOxY/view?usp=drive_link
+https://docs.google.com/document/d/18I9Sy3pryAQaW30asB47NWM-B2cAjEeH9A9UJ-VDIXo/edit?tab=t.0
 
 
 [평가]
