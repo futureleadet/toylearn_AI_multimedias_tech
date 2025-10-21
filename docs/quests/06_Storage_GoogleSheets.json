@@ -1,0 +1,887 @@
+{
+  "name": "06_Storage_GoogleSheets",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "뉴스",
+        "formDescription": "뉴스 요약 발송",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "url",
+              "placeholder": "url",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -496,
+        -48
+      ],
+      "id": "ea6a9b21-4efa-4ef0-a622-8898da004313",
+      "name": "On form submission",
+      "webhookId": "a110819a-1d3f-4cf9-8124-af15b8bc1cbb"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -304,
+        -48
+      ],
+      "id": "1ecf66fb-222c-4632-8719-e1842a451b9a",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=너는 뉴스 메일링 서비스 담당자야.\n\n아래 [입력]받은 기사 html를 분석하여 [요청] 수행\n\n[입력]\n{{ $('Edit Fields').item.json.data }}\n\n[요청]\n제목 추출, 200자 이내 기사 요약, 한줄평을 아래와 같은 [출력] 형식으로.\n\n[출력형식]\n- json 방식으로 출력\n- 제목 key : title\n- 200자 이내 요약 key : Summary\n- 한줄평 key : Comment\n\n**[출력 예시 구조 - JSON]**\n{\n  \"titlt\": 제목 TEXT,\n  \"Summary\": 요약 TEXT,\n  \"Comment\": 한줄평 TEXT\n}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        144
+      ],
+      "id": "5f881b58-98d3-4d2e-baf3-f2d20926ac41",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "IarbRFUXWk7AFYD2",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b5ff0785-c29f-4c3a-a590-35979cff4d88",
+              "name": "url",
+              "value": "={{ $('On form submission').item.json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "07021882-4bf2-4f21-8f67-5bb3e7ca90ff",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -96,
+        -48
+      ],
+      "id": "e031c23a-6b54-4fce-b940-26e1bc08b70f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78e96120-529d-4eea-8d8d-83854b49cb37",
+              "name": "test",
+              "value": "={{ $json.content.parts[0].text }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        144
+      ],
+      "id": "214b4845-522e-442f-bbbe-0285d2b65f65",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "37660640-ba5d-409d-bd9a-417e4559f669",
+              "name": "title",
+              "value": "={{ $json.test.title }}",
+              "type": "string"
+            },
+            {
+              "id": "02d3b14a-bb2d-4081-b637-6f1f0f79c078",
+              "name": "Summary",
+              "value": "={{ $json.test.Summary }}",
+              "type": "string"
+            },
+            {
+              "id": "3bcfec24-3191-4a5a-8f0f-36fc17d8d047",
+              "name": "Comment",
+              "value": "={{ $json.test.Comment }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        144
+      ],
+      "id": "2bd1b8cc-3702-4b92-b124-cebb440f3a67",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1RH-_o3wjyuVga6VlwkaP-2DsJXvW8NXIeRdBLbX-KQI",
+          "mode": "list",
+          "cachedResultName": "quests_news_mailing",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RH-_o3wjyuVga6VlwkaP-2DsJXvW8NXIeRdBLbX-KQI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "시트1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RH-_o3wjyuVga6VlwkaP-2DsJXvW8NXIeRdBLbX-KQI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "URL": "={{ $json.url }}",
+            "KeyValue": "={{ $('On form submission').item.json.submittedAt }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KeyValue",
+              "displayName": "KeyValue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Summary",
+              "displayName": "Summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Comment",
+              "displayName": "Comment",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        -48
+      ],
+      "id": "336284a1-2094-4467-be43-0661f8bd9bd8",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "cxt7xdFmt6ZumY2R",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1RH-_o3wjyuVga6VlwkaP-2DsJXvW8NXIeRdBLbX-KQI",
+          "mode": "list",
+          "cachedResultName": "quests_news_mailing",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RH-_o3wjyuVga6VlwkaP-2DsJXvW8NXIeRdBLbX-KQI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "시트1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RH-_o3wjyuVga6VlwkaP-2DsJXvW8NXIeRdBLbX-KQI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Summary": "={{ $json.Summary }}",
+            "Comment": "={{ $json.Comment }}",
+            "KeyValue": "={{ $('Append row in sheet').item.json.KeyValue }}"
+          },
+          "matchingColumns": [
+            "KeyValue"
+          ],
+          "schema": [
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "KeyValue",
+              "displayName": "KeyValue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Summary",
+              "displayName": "Summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Comment",
+              "displayName": "Comment",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        640,
+        144
+      ],
+      "id": "a628aab5-c1ce-4956-8d8a-c7698f3878a2",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "cxt7xdFmt6ZumY2R",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "google Email"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        400
+      ],
+      "id": "30b76beb-8886-4c3d-8542-092c81ee87ff",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "sendTo": "=",
+        "subject": "오늘의 뉴스",
+        "emailType": "text",
+        "message": "=<제목>\n\n<요약>\n{{ $('Update row in sheet').item.json.Summary }}\n<한줄평>\n{{ $('Update row in sheet').item.json.Comment }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        64,
+        400
+      ],
+      "id": "5ade8e44-1e5c-449b-bcaf-8b80e0b7f873",
+      "name": "Send a message",
+      "webhookId": "9f8f12d3-7f57-43a6-b463-7e0bf671b4e5",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "6SpnPo7sU5hvoCuq",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15PSi6M5ssF-wcTMlC5ifEzl42g7iFld8CxvGtQasJdI",
+          "mode": "list",
+          "cachedResultName": "Member_informations",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15PSi6M5ssF-wcTMlC5ifEzl42g7iFld8CxvGtQasJdI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15PSi6M5ssF-wcTMlC5ifEzl42g7iFld8CxvGtQasJdI/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -352,
+        400
+      ],
+      "id": "81e30bd6-e301-471d-8266-6298cf905ac1",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "46TN6kjoqTFYnopk",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "On form submission": [
+      {
+        "json": {
+          "url": "https://v.daum.net/v/20251021135544332",
+          "submittedAt": "2025-10-21T16:25:28.819+09:00",
+          "formMode": "test"
+        }
+      }
+    ],
+    "Update row in sheet": [
+      {
+        "json": {
+          "Summary": "유시민 작가가 이재명 대통령의 자주국방 의지에 힘을 실었다. 유 작가는 지난 19일 유튜브 채널에서 한미 관세 협상 관련 \"사인 안 하면 미군 뺀다\"는 협박에 '외국 군대 없이 자주국방 할 수 있다'는 대통령 발언이 응답이라고 밝혔다.",
+          "Comment": "유시민 작가가 미군 철수에 대해 '별 상관없다'는 입장을 밝히고 한국 기업의 손해를 감수할 수 있다고 언급하며 자주국방론에 힘을 실어 논란이 예상된다.",
+          "KeyValue": "2025-10-21T16:25:28.819+09:00"
+        }
+      }
+    ],
+    "Get row(s) in sheet": [
+      {
+        "json": {
+          "row_number": 2,
+          "이름": "오상훈",
+          "My computer ip": "192.168.0.179",
+          "n8n cloude": "https://mahaumaster.app.n8n.cloud/",
+          "slack ID": "otter.oh@gmail.com",
+          "google Email": "otter.oh@gmail.com",
+          "https://github.com/ ID": "https://github.com/yojulab"
+        }
+      },
+      {
+        "json": {
+          "row_number": 3,
+          "이름": "이금락",
+          "My computer ip": "192.168.0.213",
+          "n8n cloude": "https://windows2xp69.app.n8n.cloud",
+          "slack ID": "windows2xp69@gmail.com",
+          "google Email": "windows2xp69@gmail.com",
+          "https://github.com/ ID": "https://github.com/scottlee-max"
+        }
+      },
+      {
+        "json": {
+          "row_number": 4,
+          "이름": "박영후",
+          "My computer ip": "192.168.0.145",
+          "n8n cloude": "https://dudgn7715.app.n8n.cloud/",
+          "slack ID": "dudgn7715@gmail.com",
+          "google Email": "dudgn7715@gmail.com",
+          "https://github.com/ ID": "https://github.com/ParkYounghu"
+        }
+      },
+      {
+        "json": {
+          "row_number": 5,
+          "이름": "오채언",
+          "My computer ip": "192.168.0.86",
+          "n8n cloude": "",
+          "slack ID": "t1acjscat@gmail.com",
+          "google Email": "t1acjscat@gmail.com",
+          "https://github.com/ ID": "https://github.com/t1acjscat-oc"
+        }
+      },
+      {
+        "json": {
+          "row_number": 6,
+          "이름": "오수현",
+          "My computer ip": "192.168.0.95",
+          "n8n cloude": "https://helena513.app.n8n.cloud/",
+          "slack ID": "ohsue568@gmail.com",
+          "google Email": "ohsue568@gmail.com",
+          "https://github.com/ ID": "second.prompts.md"
+        }
+      },
+      {
+        "json": {
+          "row_number": 7,
+          "이름": "이상로",
+          "My computer ip": "192.168.0.39",
+          "n8n cloude": "https://citylovelee1113.app.n8n.cloud/",
+          "slack ID": "kimtiger459@gmail.com",
+          "google Email": "kimtiger459@gmail.com",
+          "https://github.com/ ID": "https://github.com/kimtiger459-commits"
+        }
+      },
+      {
+        "json": {
+          "row_number": 8,
+          "이름": "정한솔",
+          "My computer ip": "192.168.0.143",
+          "n8n cloude": "https://eluu100004.app.n8n.cloud",
+          "slack ID": "eluu100004@gmail.com",
+          "google Email": "eluu100004@gmail.com",
+          "https://github.com/ ID": "https://github.com/Hansol1004"
+        }
+      },
+      {
+        "json": {
+          "row_number": 9,
+          "이름": "유재랑",
+          "My computer ip": "192.168.0.112",
+          "n8n cloude": "https://jaerang.app.n8n.cloud/",
+          "slack ID": "jaerang0611@gmail.com",
+          "google Email": "jaerang0611@gmail.com",
+          "https://github.com/ ID": "https://github.com/jaerang0611"
+        }
+      },
+      {
+        "json": {
+          "row_number": 10,
+          "이름": "최현미",
+          "My computer ip": "192.168.0.20",
+          "n8n cloude": "",
+          "slack ID": "267nuku@gmail.com",
+          "google Email": "267nuku@gmail.com",
+          "https://github.com/ ID": "https://github.com/267nuku"
+        }
+      },
+      {
+        "json": {
+          "row_number": 11,
+          "이름": "장근선",
+          "My computer ip": "192.168.0.55",
+          "n8n cloude": "https://jkkachi.app.n8n.cloud/",
+          "slack ID": "jkkachi@gmail.com",
+          "google Email": "jkkachi@gmail.com",
+          "https://github.com/ ID": "https://github.com/jks700"
+        }
+      },
+      {
+        "json": {
+          "row_number": 12,
+          "이름": "이율비",
+          "My computer ip": "192.168.0.69",
+          "n8n cloude": "https://leeyulbi.app.n8n.cloud/",
+          "slack ID": "egoism030400@gmail.com",
+          "google Email": "egoism030400@gmail.com",
+          "https://github.com/ ID": "https://github.com/leeyulbi"
+        }
+      },
+      {
+        "json": {
+          "row_number": 13,
+          "이름": "황선영",
+          "My computer ip": "192.168.0.75",
+          "n8n cloude": "https://canimary123.app.n8n.cloud/",
+          "slack ID": "canimary123@gmail.com",
+          "google Email": "canimary123@gmail.com",
+          "https://github.com/ ID": "https://github.com/canimary123"
+        }
+      },
+      {
+        "json": {
+          "row_number": 14,
+          "이름": "정환석",
+          "My computer ip": "192.168.0.19",
+          "n8n cloude": "https://futureleadet.app.n8n.cloud/",
+          "slack ID": "futureleader@gmail.com",
+          "google Email": "futureleadet@gmail.com",
+          "https://github.com/ ID": "https://github.com/futureleadet"
+        }
+      },
+      {
+        "json": {
+          "row_number": 15,
+          "이름": "황병익",
+          "My computer ip": "192.168.0.141",
+          "n8n cloude": "https://hwangbyoungik.",
+          "slack ID": "byoungikhwang@gmail.com",
+          "google Email": "byoungikhwang@gmail.com",
+          "https://github.com/ ID": "https://github.com/byoungikhwang"
+        }
+      },
+      {
+        "json": {
+          "row_number": 16,
+          "이름": "김찬영",
+          "My computer ip": "192.168.0.80",
+          "n8n cloude": "https://rlacksdud1114.app.n8n.cloud/",
+          "slack ID": "rlacksdud1114@gmail.com",
+          "google Email": "rlacksdud1114@gmail.com",
+          "https://github.com/ ID": "https://github.com/rlacksdud1114-ship-it"
+        }
+      },
+      {
+        "json": {
+          "row_number": 17,
+          "이름": "김진현",
+          "My computer ip": "192.168.0.91",
+          "n8n cloude": "https://jinh2kakao.app.n8n.cloud/",
+          "slack ID": "jinh2kakao@gmail.com",
+          "google Email": "jinh2kakao@gmail.com",
+          "https://github.com/ ID": "https://github.com/jinh2kakao"
+        }
+      },
+      {
+        "json": {
+          "row_number": 18,
+          "이름": "정상민",
+          "My computer ip": "192.168.0.65",
+          "n8n cloude": "https://learnbook1103.app.n8n.cloud/",
+          "slack ID": "learnbook1103@gmail.com",
+          "google Email": "learnbook1103@gmail.com",
+          "https://github.com/ ID": "https://github.com/learnbook1103-design"
+        }
+      },
+      {
+        "json": {
+          "row_number": 19,
+          "이름": "이용기",
+          "My computer ip": "192.168.0.56",
+          "n8n cloude": "https://yoyoyy2025.app.n8n.cloud/",
+          "slack ID": "yoyoyy2025@gmail.com",
+          "google Email": "yoyoyy2025@gmail.com",
+          "https://github.com/ ID": "https://github.com/yoyoyy2025-byte"
+        }
+      },
+      {
+        "json": {
+          "row_number": 20,
+          "이름": "박지호",
+          "My computer ip": "192.168.0.49",
+          "n8n cloude": "https://ssadda291.app.n8n.cloud/",
+          "slack ID": "parkjiho7111@gmail.com",
+          "google Email": "parkjiho7111@gmail.com",
+          "https://github.com/ ID": "https://github.com/parkjiho7111"
+        }
+      },
+      {
+        "json": {
+          "row_number": 21,
+          "이름": "조성익",
+          "My computer ip": "",
+          "n8n cloude": "",
+          "slack ID": "dkdlfls0809@gmail.com",
+          "google Email": "parkjiho7111@gmail.com",
+          "https://github.com/ ID": "https://github.com/dkdlfls0809"
+        }
+      },
+      {
+        "json": {
+          "row_number": 22,
+          "이름": "오황욱",
+          "My computer ip": "192.168.0.68",
+          "n8n cloude": "https://hankoh.app.n8n.cloud",
+          "slack ID": "aittokbaro90@gmail.com",
+          "google Email": "aittokbaro90@gmail.com",
+          "https://github.com/ ID": "https://github.com/hank7345"
+        }
+      },
+      {
+        "json": {
+          "row_number": 23,
+          "이름": "김수영",
+          "My computer ip": "192.168.0.140",
+          "n8n cloude": "https://lydia72.app.n8n.cloud/",
+          "slack ID": "kimlydia72@gmail.com",
+          "google Email": "kimlydia72@gmail.com",
+          "https://github.com/ ID": "https://github.com/kimlydia72-spec"
+        }
+      },
+      {
+        "json": {
+          "row_number": 24,
+          "이름": "정다인",
+          "My computer ip": "192.168.0.62",
+          "n8n cloude": "https://dayin9905.app.n8n.cloud/",
+          "slack ID": "kimlydia72@gmail.com",
+          "google Email": "dayin.9905@gmail.com",
+          "https://github.com/ ID": "https://github.com/dayin-905"
+        }
+      },
+      {
+        "json": {
+          "row_number": 25,
+          "이름": "김찬호",
+          "My computer ip": "192.168.0.142",
+          "n8n cloude": "https://youthcoolmusma.app.n8n.cloud/",
+          "slack ID": "youth.cool.musma@gmail.com",
+          "google Email": "youth.cool.musma@gmail.com",
+          "https://github.com/ ID": "https://github.com/coolmusma"
+        }
+      },
+      {
+        "json": {
+          "row_number": 26,
+          "이름": "황지상",
+          "My computer ip": "192.168.0.144",
+          "n8n cloude": "https://gregchris07258305.app.n8n.cloud/",
+          "slack ID": "gregchris07258305@gmail.com",
+          "google Email": "gregchris07258305@gmail.com",
+          "https://github.com/ ID": "https://github.com/gregchris07258305-lang"
+        }
+      },
+      {
+        "json": {
+          "row_number": 27,
+          "이름": "이예진",
+          "My computer ip": "",
+          "n8n cloude": "",
+          "slack ID": "lyj000216@gmail.com",
+          "google Email": "lyj000216@gmail.com",
+          "https://github.com/ ID": "https://github.com/oyeoyj"
+        }
+      },
+      {
+        "json": {
+          "row_number": 28,
+          "이름": "윤태영",
+          "My computer ip": "",
+          "n8n cloude": "",
+          "slack ID": "nwood3124@gmail.com",
+          "google Email": "nwood3124@gmail.com",
+          "https://github.com/ ID": "https://github.com/nwood3124"
+        }
+      },
+      {
+        "json": {
+          "row_number": 29,
+          "이름": "",
+          "My computer ip": "",
+          "n8n cloude": "",
+          "slack ID": "https://join.slack.com/t/ai-06t9512/shared_invite/zt-3d0o3ioae-RiXK7_8IXawlu5ow2PVfFA",
+          "google Email": "nwood3124@gmail.com",
+          "https://github.com/ ID": ""
+        }
+      },
+      {
+        "json": {
+          "row_number": 30,
+          "이름": "이승주",
+          "My computer ip": "",
+          "n8n cloude": "",
+          "slack ID": "omegaeden0423@gamil.com",
+          "google Email": "nwood3124@gmail.com",
+          "https://github.com/ ID": "https://github.com/omegaeden0423-ux"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d1b6618d-6da5-4f0d-88b7-ba5a8f9bd324",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5d5789c044a3a2821db2b160d0a1657b1d607be52f0c09651e6533112e35e70c"
+  },
+  "id": "Jkh5sFctaCUuzBUt",
+  "tags": []
+}
