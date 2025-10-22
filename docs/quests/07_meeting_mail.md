@@ -32,7 +32,7 @@ https://docs.google.com/document/d/1KLU4oAAprirq1TxqV0p-rOtNxQEIuWCn5Mcd8sbXr8Y/
 
 ## 메일 내용
 
-```
+
 제목: 유어미디어입니다. '더 어반 십' 신제품 론칭 캠페인 논의 사항 정리 및 향후 일정 공유
 
 더 어반 십(The Urban Sip) 박서준 팀장님께,
@@ -68,4 +68,3 @@ https://docs.google.com/document/d/1KLU4oAAprirq1TxqV0p-rOtNxQEIuWCn5Mcd8sbXr8Y/
 유어미디어 전략팀장 김민준 드림
 
 T. 02-123-4567 E. contact@yourmedia.com (가상 이메일)
-```
