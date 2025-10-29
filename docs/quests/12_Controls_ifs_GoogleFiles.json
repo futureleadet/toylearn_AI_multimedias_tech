@@ -1101,6 +1101,28 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "chatId": "7324256577",
+        "text": "미확인 파일 인입되었습니다",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        592
+      ],
+      "id": "f7305970-b1ff-4b24-9d91-869e5c9188ee",
+      "name": "Send a text message",
+      "webhookId": "9c1b23cd-1369-4586-bfb6-5288befbdb02",
+      "credentials": {
+        "telegramApi": {
+          "id": "4A0Z0YYSQBP5wJel",
+          "name": "Telegram account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1335,7 +1357,7 @@
       "main": [
         [
           {
-            "node": "Message a model2",
+            "node": "Send a text message",
             "type": "main",
             "index": 0
           }
@@ -1403,13 +1425,24 @@
           }
         ]
       ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Message a model2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "d2efb9c7-afd3-4db5-bbbd-ff02dca94230",
+  "versionId": "a51ab63a-f40d-4bb0-9736-b09d0b1f8599",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "734a1336129c025c4887486ebd3da29baa7a859681f605bfa07f1aeb930e47bd"
