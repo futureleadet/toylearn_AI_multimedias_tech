@@ -2,69 +2,189 @@
 ```
 너는 경영기획과 인사를 총괄하는 20년차 팀장이야.
 
-전 직원 역량평가 결과와 부서별 요구사항을 분석하여 차년도 교육훈련 마스터플랜을 수립해야 해.
+[첨부]된 3개 파일의 데이터를 종합 분석하여 2025년 연간 교육훈련 마스터플랜을 수립해주세요.
 
-해결해야 할 비즈니스 과제는 부서별 전략 목표와 연계된 교육 과정을 개발해야 해.
+분석 요구사항:
+1. 직원 역량평가 결과를 기반으로 부서별/직급별 역량 갭을 분석하고, 
+   가장 시급한 교육 니즈를 도출해주세요.
 
-총 교육 예산은 연간 15억이야.
+2. 부서별 교육 요청서와 전년도 교육 실적을 비교 분석하여, 
+   실제 필요한 교육과 요청 교육 간의 차이를 파악해주세요.
 
-[입력 데이터]를 분석하여 [출력 사항]에 맞춰 정리해줘.
+3. 15억 예산 내에서 최적의 교육 포트폴리오를 구성하되, 
 
-[입력 데이터]
-Sample 직원역량평가결과 2024
-Sample 부서별교육요청서 2025
-Sample 교육예산가이드라인 2025
-(파일 첨부 예정)
+4. 개인별 교육 이력을 고려하여 중복 교육을 방지하고, 
+   경력 개발 경로에 맞는 체계적인 교육 계획을 수립해주세요.
 
-[출력 사항]
-## 제목
-### 개요
-### 부서별 분석 사항
-- 분석 항목 : | 전략목표 | 필요역량 | 교육과정 | 대상인원 | 예산(원) | 실시시기 | (표형식)
-### 전체 예산 요약
+출력 형식:
+- 체계적인 보고서 형식 (마크다운)
+- 핵심 지표는 표와 차트로 시각화
+- 실행 가능한 구체적인 일정과 예산 포함
+- 부서장 보고용 Executive Summary 필수
+
+특별 요청사항:
+- 교육 효과 측정을 위한 구체적인 KPI와 측정 방법 제시
+- 전년 대비 개선 사항 명확히 표시
+
+## 📤 요구 출력 형식
+
+### 2025년 연간 교육훈련 마스터플랜 (구조화된 문서)
+
+#### 필수 포함 내용:
+
+1. **Executive Summary**
+   - 핵심 목표와 전략
+   - 주요 투자 분야
+   - 기대 효과
+
+2. **역량 갭 분석 결과**
+   - 부서별 역량 현황
+   - 우선 개선 필요 영역
+   - 시각화 차트
+
+3. **부서별 분석사항**
+   -  | 전략목표 | 필요역량 | 교육과정 | 대상인원 | 예산(원) | 실시시기 |
+   - 표 정리
+
+4. **예산 계획**
+   - 부서별/유형별 예산 배분 표 정리 (분기별 집행 계획)
+   - 표 정리
+
+5. **교육 과정 상세**
+   - 과정별 상세 정보
+   - 대상자 선정 기준
+   - 교육 업체 정보
+
+6. **KPI 및 성과 관리**
+   - 측정 지표 정의
+   - 목표 수치
+   - 모니터링 방법
 
 ```
-## 2025년도 전사 교육훈련 마스터플랜
+## 2025년 연간 교육훈련 마스터플랜
 
-### 개요
-[cite_start]본 교육훈련 마스터플랜은 2024년도 직원 역량평가 결과 [cite: 1] [cite_start]및 2025년도 부서별 교육훈련 요청서 [cite: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]를 기반으로 수립되었습니다. [cite_start]총 15억 원의 예산 [cite: 15] 내에서 전사 전략목표와 연계된 역량 개발을 목표로 합니다.
+**To:** 경영진
+**From:** 경영기획/인사 총괄
+**Date:** 2024년 11월 20일 (가상)
+**Subject:** 2025년 연간 교육훈련 마스터플랜 승인 요청
 
-[cite_start]2025년의 핵심 전략 방향은 '디지털 전환(DT) 역량 강화', 'AI/데이터 분석 역량 개발', '리더십 파이프라인 구축', '글로벌 역량 향상'입니다[cite: 15]. 본 플랜은 이러한 전략적 방향성에 따라 부서별 필수 직무교육과 전사 공통 교육을 균형 있게 배분하였습니다.
+---
 
-### 부서별 분석 사항
-[cite_start]2024년도 직원 역량평가 결과 [cite: 1][cite_start]에서 도출된 개인별 부족 역량과 2025년도 부서별 전략 목표 [cite: 2, 4, 6, 8, 10, 12]를 연계하여 다음과 같이 필수 직무 교육 과정을 편성합니다. [cite_start]예산은 2025년도 교육훈련 예산 편성 가이드라인 [cite: 20, 22]을 기준으로 산정하였습니다.
+### 1. Executive Summary
 
-| 부서 | 전략목표 | 필요역량 | 교육과정 | 대상인원 | 예산(원) | 실시시기 |
+[cite_start]본 문서는 2024년도 직원 역량평가 결과 [cite: 1][cite_start], 2025년 부서별 교육훈련 요청서 [cite: 2-14][cite_start], 그리고 2025년 교육예산 가이드라인 [cite: 15-26]을 종합 분석하여 수립한 차년도 교육훈련 마스터플랜입니다.
+
+**핵심 목표와 전략**
+2025년 교육의 핵심 목표는 **'데이터 기반의 역량 갭(Gap) 해소'**와 **'미래 성장을 위한 전략적 인재 육성'**입니다. [cite_start]이를 위해, 전년 대비 25% 증액된 총 15억 원의 예산을 [cite: 16] 3대 핵심 분야에 집중 투자합니다.
+
+**주요 투자 분야**
+1.  [cite_start]**디지털 전환(DT) 역량 (4.5억, 30%)**: AI/ML [cite: 22][cite_start], 클라우드 [cite: 22][cite_start], 데이터 분석 [cite: 22] 교육에 중점 투자하여 전사적 DT 대응력을 확보합니다.
+2.  [cite_start]**리더십 개발 (2.25억, 15%)**: 차세대 리더 양성 및 직급별 관리 역량 강화를 위한 계층 교육을 확대합니다[cite: 16, 22].
+3.  [cite_start]**직무 전문성 (9억, 60%)**: 부서별 핵심 직무 갭(Gap) 해소를 위한 필수 교육을 편성합니다[cite: 16]. (DT 예산 4.5억 포함)
+4.  [cite_start]**필수 교육 (0.75억, 5%)**: 법정 의무 교육을 전사적으로 이수합니다[cite: 17].
+
+**전년 대비 개선 사항**
+* [cite_start]**데이터 기반 기획**: 기존의 부서별 요청에만 의존하던 방식에서 벗어나, 전사 역량평가 결과(Gap Analysis) [cite: 1]에 근거하여 가장 시급한 교육 니즈를 도출하고 자원을 배분합니다.
+* [cite_start]**전략적 예산 증액**: 전년 12억에서 15억으로 예산을 25% 증액하여 [cite: 16][cite_start], DT 및 리더십 등 전략 분야에 대한 투자를 선제적으로 강화합니다[cite: 15].
+
+**기대 효과**
+* **핵심 역량 갭 해소**: '데이터 분석', '프로젝트 관리' 등 전사적 공통 갭 해소 및 '클라우드', 'AI/ML' 등 미래 핵심 기술 확보.
+* [cite_start]**성과 관리**: 교육 이수율 95% [cite: 24][cite_start], 업무 적용도 70% [cite: 23][cite_start], 자격증 취득률 40% [cite: 23] 달성.
+
+---
+
+### 2. 역량 갭(Gap) 분석 결과
+
+[cite_start]2024년 직원 역량평가 결과 [cite: 1] 분석 결과, 전사적 교육 니즈와 부서별/직급별 특성이 명확하게 도출되었습니다.
+
+**가장 시급한 교육 니즈 (전사 Top 4)**
+[cite_start]`부족역량분야` [cite: 1]에 가장 빈번하게 언급된 역량은 다음과 같습니다.
+1.  [cite_start]**데이터 분석**: (예: 김지은 [cite: 1][cite_start], 이동욱 [cite: 1])
+2.  [cite_start]**프로젝트 관리**: (예: 이영희 [cite: 1][cite_start], 김예진 [cite: 1])
+3.  [cite_start]**전략 수립**: (예: 정재훈 [cite: 1][cite_start], 김예진 [cite: 1])
+4.  [cite_start]**테스트 자동화**: (예: 강민정 [cite: 1][cite_start], 박소연 [cite: 1])
+
+[cite_start]이는 예산 가이드라인의 '데이터 분석' [cite: 22] [cite_start]및 '리더십 개발(PMP 등)' 투자 방향 [cite: 12]과 정확히 일치합니다.
+
+**직급별 역량 갭 분석**
+* **사원/대리급 (Junior)**: '목표-현재' 점수 차이인 역량 갭이 평균 10.2~10.4점으로 전 직급 중 가장 높게 나타났습니다. [cite_start]'프로그래밍기초', '협상스킬', '데이터베이스' [cite: 1] 등 실무 수행에 필수적인 하드 스킬(Hard Skill)의 시급한 보완이 필요합니다.
+* [cite_start]**과장/차장급 (Senior/Manager)**: '리더십', '조직관리', '프로젝트관리', '전략수립' [cite: 1] 등 관리 및 기획 역량 갭이 두드러졌습니다. [cite_start]이는 계층 교육(리더십) 예산 2.25억 원 투입의 [cite: 16, 22] 직접적인 근거가 됩니다.
+
+**[시각화] 부서별/직급별 역량 갭 요약**
+* **부서별 갭**: (차트 삽입 시) '개발본부', '마케팅본부', '영업본부'가 가장 높은 평균 역량 갭을 보입니다. 이는 신기술 도입 및 시장 변화에 따른 높은 목표치 설정에 기인하며, 이들 부서에 대한 전략적 투자가 시급함을 의미합니다.
+* **직급별 갭**: (차트 삽입 시) '사원'과 '대리' 직급의 갭이 '차장', '부장' 직급의 갭보다 현저히 높게 나타나, 주니어 레벨의 집중적인 기초 직무 교육이 필요함을 시사합니다.
+
+---
+
+### 3. 부서별 분석사항: 갭(Gap), 요청, 예산 연계
+
+[cite_start]역량 갭 분석 [cite: 1][cite_start], 부서별 요청서 [cite: 2-14][cite_start], 예산 가이드라인 [cite: 15-26]을 연계하여 도출한 2025년 부서별 핵심 교육 계획입니다.
+
+| 부서 | 전략목표 (요청서 기반) | 필요역량 (역량평가 기반) | 교육과정 (요청+예산 연계) | 대상인원 | 예산(원) | 실시시기 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **개발본부** | [cite_start]클라우드 전환 프로젝트 대응 [cite: 2] | [cite_start]클라우드 아키텍처 [cite: 1] | [cite_start]AWS Solutions Architect 자격증 과정 [cite: 2] | [cite_start]30명 [cite: 2] | [cite_start]100,000,000 [cite: 22] | [cite_start]2분기 [cite: 2] |
-| | [cite_start]AI 서비스 개발 역량 확보 [cite: 2] | [cite_start]AI/ML [cite: 1] | [cite_start]AI/ML 실무 과정 [cite: 2] | [cite_start]20명 [cite: 2] | [cite_start]150,000,000 [cite: 22] | [cite_start]1분기 [cite: 3] |
-| | [cite_start]CI/CD 파이프라인 구축 [cite: 2] | [cite_start]DevOps [cite: 1] | [cite_start]DevOps 엔지니어링 과정 [cite: 2] | [cite_start]15명 [cite: 2] | [cite_start]75,000,000 [cite: 20] | [cite_start]3분기 [cite: 2] |
-| **영업본부** | [cite_start]영업 성과 향상 [cite: 4] | [cite_start]B2B 세일즈, 제품지식 [cite: 1] | [cite_start]B2B 세일즈 마스터 과정 [cite: 4] | [cite_start]25명 [cite: 4] | [cite_start]100,000,000 [cite: 20] | [cite_start]1분기 [cite: 4] |
-| | [cite_start]대형 계약 협상력 강화 [cite: 4] | [cite_start]협상스킬, 가격협상 [cite: 1] | [cite_start]협상 스킬 고급 과정 [cite: 4] | [cite_start]15명 [cite: 4] | [cite_start]30,000,000 [cite: 20] | [cite_start]2분기 [cite: 4] |
-| | [cite_start]온라인 영업 역량 강화 [cite: 5] | [cite_start]디지털마케팅 [cite: 1] | [cite_start]디지털 세일즈 전환 과정 [cite: 5] | [cite_start]20명 [cite: 5] | [cite_start]40,000,000 [cite: 20] | [cite_start]1분기 [cite: 5] |
-| **마케팅본부** | [cite_start]디지털 전환 대응 [cite: 6] | [cite_start]디지털광고, SNS운영 [cite: 1] | [cite_start]디지털 마케팅 전문가 과정 [cite: 6] | [cite_start]15명 [cite: 6] | [cite_start]50,000,000 [cite: 22] | [cite_start]1분기 [cite: 6] |
-| | [cite_start]마케팅 ROI 개선 [cite: 6] | [cite_start]데이터드리븐마케팅 [cite: 1] | [cite_start]데이터 드리븐 마케팅 [cite: 6] | [cite_start]12명 [cite: 6] | [cite_start]48,000,000 [cite: 20] | [cite_start]2분기 [cite: 6] |
-| | [cite_start]콘텐츠 품질 향상 [cite: 7] | [cite_start]콘텐츠마케팅, 카피라이팅 [cite: 1] | [cite_start]콘텐츠 마케팅 실무 [cite: 7] | [cite_start]10명 [cite: 7] | [cite_start]20,000,000 [cite: 20] | [cite_start]3분기 [cite: 7] |
-| **인사본부** | [cite_start]데이터 기반 HR 구축 [cite: 8] | [cite_start]HR애널리틱스 [cite: 1] | [cite_start]HR 애널리틱스 과정 [cite: 8] | [cite_start]8명 [cite: 8] | [cite_start]32,000,000 [cite: 20] | [cite_start]2분기 [cite: 8] |
-| | [cite_start]법규 준수 강화 [cite: 8] | [cite_start]노무관리 [cite: 1] | [cite_start]노동법 실무 과정 [cite: 8] | [cite_start]6명 [cite: 8] | [cite_start]12,000,000 [cite: 20] | [cite_start]1분기 [cite: 8] |
-| | [cite_start]조직문화 혁신 [cite: 9] | [cite_start]조직문화 [cite: 1] | [cite_start]조직문화 컨설팅 과정 [cite: 9] | [cite_start]4명 [cite: 9] | [cite_start]24,000,000 [cite: 20] | [cite_start]3분기 [cite: 9] |
-| **재무본부** | [cite_start]회계 기준 변경 대응 [cite: 10] | [cite_start]IFRS, 세무회계 [cite: 1] | [cite_start]IFRS 실무 과정 [cite: 10] | [cite_start]10명 [cite: 10] | [cite_start]40,000,000 [cite: 20] | [cite_start]1분기 [cite: 10] |
-| | [cite_start]투자 의사결정 지원 [cite: 10] | [cite_start]재무모델링 [cite: 1] | [cite_start]재무 모델링 고급 [cite: 10] | [cite_start]8명 [cite: 10] | [cite_start]16,000,000 [cite: 20] | [cite_start]2분기 [cite: 10] |
-| | [cite_start]세무 리스크 관리 [cite: 10] | [cite_start]세무회계 [cite: 1] | [cite_start]세무 실무 과정 [cite: 10] | [cite_start]6명 [cite: 10] | [cite_start]12,000,000 [cite: 20] | [cite_start]3분기 [cite: 10] |
-| **기획본부** | [cite_start]전략 수립 역량 강화 [cite: 12] | [cite_start]전략수립, 비즈니스전략 [cite: 1] | [cite_start]전략기획 실무 과정 [cite: 12] | [cite_start]10명 [cite: 12] | [cite_start]40,000,000 [cite: 20] | [cite_start]1분기 [cite: 12] |
-| | [cite_start]데이터 분석 역량 강화 [cite: 12] | [cite_start]데이터분석 [cite: 1] | [cite_start]비즈니스 애널리틱스 [cite: 12] | [cite_start]8명 [cite: 12] | [cite_start]48,000,000 [cite: 20] | [cite_start]2분기 [cite: 12] |
-| | [cite_start]프로젝트 관리 체계화 [cite: 12] | [cite_start]프로젝트관리 [cite: 1] | [cite_start]프로젝트 관리 전문가(PMP) [cite: 12] | [cite_start]6명 [cite: 12] | [cite_start]48,000,000 [cite: 20] | [cite_start]1분기 [cite: 12] |
+| **개발본부** | [cite_start]클라우드 전환 대응 [cite: 2] | [cite_start]클라우드아키텍처, DevOps [cite: 1] | [cite_start]AWS Solutions Architect [cite: 2] | [cite_start]30명 [cite: 2] | [cite_start]100,000,000 [cite: 22] | [cite_start]2분기 [cite: 2] |
+| | [cite_start]AI 서비스 개발 [cite: 2] | [cite_start]AI/ML, Python고급 [cite: 1] | [cite_start]AI/ML 실무 과정 [cite: 2] | [cite_start]20명 [cite: 2] | [cite_start]150,000,000 [cite: 22] | [cite_start]1분기 [cite: 3] |
+| **영업본부** | [cite_start]영업 성과 향상 [cite: 4] | [cite_start]B2B세일즈, 제품지식 [cite: 1] | [cite_start]B2B 세일즈 마스터 [cite: 4] | [cite_start]25명 [cite: 4] | (직무예산 9억 내) | [cite_start]1분기 [cite: 4] |
+| | [cite_start]협상력 강화 [cite: 4] | [cite_start]협상스킬, 가격협상 [cite: 1] | [cite_start]협상 스킬 고급 과정 [cite: 4] | [cite_start]15명 [cite: 4] | (직무예산 9억 내) | [cite_start]2분기 [cite: 4] |
+| | [cite_start]온라인 영업 강화 [cite: 5] | [cite_start]디지털마케팅, 해외영업 [cite: 1] | [cite_start]디지털 세일즈 전환 과정 [cite: 5] | [cite_start]20명 [cite: 5] | [cite_start]50,000,000 [cite: 22] | [cite_start]1분기 [cite: 5] |
+| **마케팅본부** | [cite_start]마케팅 ROI 개선 [cite: 6] | [cite_start]데이터드리븐마케팅, 데이터분석 [cite: 1] | [cite_start]데이터 드리븐 마케팅 [cite: 6] | [cite_start]12명 [cite: 6] | [cite_start]100,000,000 [cite: 22] | [cite_start]2분기 [cite: 6] |
+| **기획본부** | [cite_start]프로젝트 관리 체계화 [cite: 12] | [cite_start]프로젝트관리, 전략수립 [cite: 1] | [cite_start]프로젝트 관리 전문가(PMP) [cite: 12] | [cite_start]6명 [cite: 12] | (리더십/직무예산 내) | [cite_start]1분기 [cite: 12] |
+| | [cite_start]데이터 분석 역량 강화 [cite: 12] | [cite_start]데이터분석 [cite: 1] | [cite_start]비즈니스 애널리틱스 [cite: 12] | [cite_start]8명 [cite: 12] | (데이터분석 1억 내) | [cite_start]2분기 [cite: 12] |
+| **인사본부** | [cite_start]데이터 기반 HR 구축 [cite: 8] | [cite_start]HR애널리틱스 [cite: 1] | [cite_start]HR 애널리틱스 과정 [cite: 8] | [cite_start]8명 [cite: 8] | (데이터분석 1억 내) | [cite_start]2분기 [cite: 8] |
+| **재무본부** | [cite_start]회계 기준 변경 대응 [cite: 10] | [cite_start]IFRS, 세무회계 [cite: 1] | [cite_start]IFRS 실무 과정 [cite: 10] | [cite_start]10명 [cite: 10] | (직무예산 9억 내) | [cite_start]1분기 [cite: 10] |
 
-* [cite_start]*참고: 상기 직무 교육 예산(총 885,000,000원)은 전체 직무교육 예산 한도 900,000,000원 [cite: 16] 내에서 집행됩니다.*
+---
 
-### 전체 예산 요약
-[cite_start]총 예산 1,500,000,000원 [cite: 15][cite_start]은 2025년도 교육훈련 예산 편성 가이드라인 [cite: 16]에 따라 다음과 같이 배분합니다.
+### 4. 예산 계획
 
+총 예산 15억 원은 가이드라인에 따라 다음과 같이 배분 및 집행합니다.
+
+**유형별 예산 배분**
 | 구분 | 배분비율 | 금액(원) | 비고 |
 | :--- | :--- | :--- | :--- |
-| 직무교육 | [cite_start]60% [cite: 16] | [cite_start]900,000,000 [cite: 16] | 핵심역량 중심 (부서별 분석 사항 참조) |
-| 계층교육 | [cite_start]15% [cite: 16] | [cite_start]225,000,000 [cite: 16] | [cite_start]리더십/신입 (신임 팀장 과정 등 [cite: 14]) |
-| 공통교육 | [cite_start]10% [cite: 16] | [cite_start]150,000,000 [cite: 16] | [cite_start]어학/OA/소양 (비즈니스 영어 등 [cite: 14, 17]) |
-| 법정교육 | [cite_start]5% [cite: 16] | [cite_start]75,000,000 [cite: 16] | [cite_start]의무교육 (성희롱 예방 교육 등 [cite: 14]) |
-| 특별교육 | [cite_start]10% [cite: 16] | [cite_start]150,000,000 [cite: 16] | [cite_start]해외연수/학위/컨퍼런스 지원 [cite: 2, 4, 13] |
-| **합계** | **100%** | [cite_start]**1,500,000,000** [cite: 15] | |
+| **직무교육** | 60% | 900,000,000 | [cite_start](DT 4.5억 [cite: 22][cite_start], 정보보안 0.5억 [cite: 22] 포함) |
+| **계층교육 (리더십)** | 15% | 225,000,000 | [cite_start]리더십 개발 2.25억 [cite: 22] |
+| **공통교육** | 10% | 150,000,000 | [cite_start]어학 0.8억 [cite: 22][cite_start], 글로벌 0.2억 [cite: 22] 포함 |
+| **법정교육** | 5% | 75,000,000 | [cite_start]의무교육 [cite: 17] |
+| **특별교육** | 10% | 150,000,000 | [cite_start]해외연수 [cite: 24][cite_start], 학위 [cite: 24][cite_start], 자격증 지원 [cite: 22] |
+| **합계** | **100%** | **1,500,000,000** | |
+
+**분기별 집행 계획 (가안)**
+| 구분 | Q1 (1분기) | Q2 (2분기) | Q3 (3분기) | Q4 (4분기) | 합계 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **예상 집행액 (억)** | 5.25억 | 4.50억 | 3.00억 | 2.25억 | 15억 |
+| **비율 (%)** | 35% | 30% | 20% | 15% | 100% |
+| **주요 활동** | [cite_start]AI/ML, B2B세일즈, PMP 등 핵심 필수 직무 집중 [cite: 3, 4, 12] | [cite_start]AWS(클라우드), 데이터 드리븐 등 DT 집중 [cite: 2, 6] | [cite_start]DevOps 등 직무 심화 [cite: 3] | [cite_start]법정교육 마무리, 공통 교육 [cite: 13] | |
+
+---
+
+### 5. 교육 과정 상세 및 운영 방안
+
+**대상자 선정 기준**
+* [cite_start]**필수 과정**: 2024년 역량평가 결과 Gap이 큰 직원 [cite: 1] [cite_start]및 2025년 부서별 필수 교육 요청 대상자 [cite: 2-14] 우선 배정.
+* **리더십 과정**: 직급 및 승진 연한 도래자, 부서장 추천자.
+* **선택 과정**: 개인별 경력개발계획(CDP) 및 인사고과 연계.
+
+**교육 업체 정보**
+* [cite_start]가이드라인의 '교육기관 Pool (별첨 1)' [cite: 25] 내 우선 계약 기관을 활용합니다.
+* DT 과정(AI, 클라우드 등)은 전문 기술 파트너사와 협력하여 최고 수준의 교육 품질을 확보합니다.
+
+**제한사항 및 해결 방안 (요구사항 2, 4)**
+* **(Req #2) 전년도 교육 실적 비교**: **제한사항입니다.** 첨부 파일에 '전년도 교육 실적' 데이터가 포함되지 않아, 요청 교육과의 정량적 ROI 비교 분석에 한계가 있습니다.
+    * [cite_start]**해결 방안**: 대신 '역량평가 갭' [cite: 1][cite_start]과 '부서 요청' [cite: 2-14] 간의 **정합성**을 분석했으며, 대부분의 필수 요청이 실제 갭과 일치함을 확인했습니다. [cite_start](예: 개발팀 '클라우드' 갭 [cite: 1] [cite_start]-> 'AWS 과정' 요청 [cite: 2]) 2025년에는 본 플랜의 KPI(섹션 6)를 철저히 측정하여 2026년 기획의 기반(Baseline)을 마련하겠습니다.
+* **(Req #4) 개인별 교육 이력**: **제한사항입니다.** '개인별 교육 이력' 데이터베이스가 미비하여, 중복 교육 방지 및 CDP 연계에 한계가 있습니다.
+    * [cite_start]**해결 방안**: 2025년 운영 시, LMS(학습관리시스템)와 '교육 신청서(Form-EDU-01)' [cite: 26][cite_start]의 부서장 1차 승인 프로세스 [cite: 23]를 통해 중복 수강을 검증합니다. 2025년 누적 데이터를 기반으로 2026년부터는 CDP와 완전 연동하겠습니다.
+
+---
+
+### 6. KPI 및 성과 관리
+
+[cite_start]교육 효과는 예산 가이드라인(5.3항) [cite: 23-24]에 명시된 4단계 KPI를 통해 체계적으로 측정합니다.
+
+| 구분 (Kirkpatrick) | 측정 지표 | 목표 수치 | 측정 방법 |
+| :--- | :--- | :--- | :--- |
+| **Level 1 (만족)** | 교육 만족도 | [cite_start]**4.0 / 5.0** [cite: 23] | 교육 종료 후 즉시 설문 |
+| **Level 2 (학습)** | 교육 이수율 | [cite_start]**95%** [cite: 24] | LMS 출결 및 수료증 확인 |
+| | 자격증 취득률 | [cite_start]**40%** [cite: 23] | (AWS, PMP 등) 3개월 내 |
+| **Level 3 (행동)** | **업무 적용도** | [cite_start]**70%** [cite: 23] | 교육 3개월 후, 본인/팀장 설문 |
+| **Level 4 (성과)** | 부서 KPI 기여도 | (정성/정량) | [cite_start]'교육 결과 보고서(Form-EDU-02)' [cite: 26] 및 반기 성과 리뷰 연계 |
