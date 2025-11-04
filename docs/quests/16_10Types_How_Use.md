@@ -89,6 +89,7 @@
 
 [입력 데이터]
 https://docs.google.com/spreadsheets/d/1EpntbZd1cuGUnMh-zBKYu9R1og17fnBw9C03W0T333M/edit?gid=1218353837#gid=1218353837
+(내 채널의 시청자 데이터 입력)
 ```
 ## 프롬프트 실행 결과
 
