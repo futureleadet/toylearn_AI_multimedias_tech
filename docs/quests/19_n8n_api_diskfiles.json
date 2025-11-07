@@ -1,0 +1,256 @@
+{
+  "name": "study_storages_Diskfiles",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "AIzaSyDtOAj3wltj498TC-Gobr7nvEc5jCJ5s_k"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n        \"contents\": [{\n          \"parts\":[{\n            \"text\": \"{{ $json.Narration }}\"\n          }]\n        }],\n        \"generationConfig\": {\n          \"responseModalities\": [\"AUDIO\"],\n          \"speechConfig\": {\n            \"voiceConfig\": {\n              \"prebuiltVoiceConfig\": {\n                \"voiceName\": \"Kore\"\n              }\n            }\n          }\n        }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -448,
+        -64
+      ],
+      "id": "5a8ea66f-b56b-4dbe-9dff-7cfa7370e7cd",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "candidates[0].content.parts[0].inlineData.data",
+        "options": {
+          "fileName": "=out{{ $json.loop_index }}.pcm"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -48,
+        -64
+      ],
+      "id": "9f6f42dc-ed51-46af-9dc7-ddb6f599dffc",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=/home/node/resources/out{{ $('Edit Fields1').item.json.loop_index }}.pcm",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        144,
+        -64
+      ],
+      "id": "319990e1-7b5d-43dc-9979-034a9b8e8c86",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "command": "=cd /home/node/resources &&\nffmpeg -f s16le -ar 24000 -ac 1 -i out{{ $('Edit Fields1').item.json.loop_index }}.pcm outs{{ $('Edit Fields1').item.json.loop_index }}.wav"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -64
+      ],
+      "id": "dc3fa997-3bd1-4730-82bf-0172e26c802d",
+      "name": "Execute Command"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1-WxjhKYgbEDazbtuSq6Qr83Ak8-2Y63voIIP0x0L9bc",
+          "mode": "list",
+          "cachedResultName": "narration",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-WxjhKYgbEDazbtuSq6Qr83Ak8-2Y63voIIP0x0L9bc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "시트1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-WxjhKYgbEDazbtuSq6Qr83Ak8-2Y63voIIP0x0L9bc/edit#gid=0"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        -80
+      ],
+      "id": "938393f2-23ee-4dc0-a45c-ed1e1e6247a5",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "NxkTvVKB7usQCZhx",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -704,
+        -80
+      ],
+      "id": "d1d61ff6-2a85-4942-bf11-e29659a17ba5",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f456d9a-5095-40a8-8587-c20ae5ba9918",
+              "name": "=loop_index",
+              "value": "={{ $runIndex }}",
+              "type": "string"
+            },
+            {
+              "id": "24650266-abdc-440e-9586-133ab23e1be1",
+              "name": "candidates[0].content.parts[0].inlineData.data",
+              "value": "={{ $json.candidates[0].content.parts[0].inlineData.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -256,
+        -64
+      ],
+      "id": "7fcc61b9-5038-436c-98f0-58044b886a56",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d23b482e-85ed-4af4-9842-d1ebe26eec2a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6cef2cff80e316c06a78d4e6d5b675bf864e8b9a7035711477b6f29db4b3d9fb"
+  },
+  "id": "GK5ZBt69Rpk5kRID",
+  "tags": []
+}
